@@ -1,0 +1,58 @@
+1.8c:
+ - added tree-type shaders support
+
+1.8b:
+ - fixed DX9 compatibility issues
+
+1.8 (Unity 5.5+ only)
+ - Unity 5.5 compatibility fixes
+ -- Orthogonal camera depth buffer handling changes
+ -- Outline width range recalibration
+ -- Null material handling on transparency mask component
+ - Deprecated "Check render types" parameter (always on from now on)
+ - Updated outline shader - now it normalizes lines thickness for distance and camera FOV
+
+1.7:
+ - added NoShadows option for simple background rendering
+ - added optional lights disabling for simple background rendering
+ - fixed ColorizeTrigger methods
+
+1.6c:
+ - DX11 + colorize triggers incompatibility fixed
+ - "check for transparency" option deprecated due to net loss of performance when enabled
+
+1.6b:
+ - orthographic camera fix
+
+1.6:
+ - complete overhaul of mask generating and composition algorithms
+ - removed RenderTexture restore operation (performance boost on mobiles)
+ - improved compatibility with Unity 5 and Android combination
+ - improved 1-pass blur looks (range blur - added outline smoothing) 
+ - improved depth sensitivity consistency
+ - added colored holograms support
+ - added transparency masks support for obstacles
+ - added multi-camera rendering support
+ - added mask and background downsampling options
+ 
+
+1.5:
+ - added depth sensitivity setting
+ - changes to hologram and alpha-hologram special effects
+
+1.4b: added Deferred lighting rendering path support
+
+1.4:
+ - added more integration options for 2D projects:
+ -- "check render type" toggle allows precision trigger checking with sprites
+ -- "alpha hologram" sfx allows hologram effect to work correctly with sprites (and generally produces better resutls than simple hologram)
+ - minor fixes
+
+1.3:
+ - added Colorize triggers option
+ - improved API for disabling/enabling/coloring triggers at runtime
+ - fixed D3D anti-aliasing mask flip problem
+
+1.2: Optimized background rendering: Added projection matrix change for background camera allowing rendering of only visible areas.
+
+1.1: Android compatibility added

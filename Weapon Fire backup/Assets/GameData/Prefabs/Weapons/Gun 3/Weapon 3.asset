@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e24797c76830be4b839995fb4df43ea, type: 3}
+  m_Name: Weapon 3
+  m_EditorClassIdentifier: 
+  WeaponPrefab: {fileID: 4503221930174173934, guid: 540b919db45ec5443b67cc30ee6060b4,
+    type: 3}
+  WeaponModel: {fileID: 5857072209132592162, guid: 275265a7bd1779c46b51b13ec4acce49,
+    type: 3}
+  BulletPrefab: {fileID: 2071336235995738722, guid: 85dd306431842f0469359f7cd85700be,
+    type: 3}
+  WeaponName: 3RD
+  FireRate: 0.45
+  FireRateIncrement: 0.09
+  FireRateLowerLimit: 0.2
+  FireRateUpperLimit: 0.45
+  FireRange: 1
+  FireRangeIncrement: 1
+  FireRangeLowerLimit: 1
+  FireRangeUpperLimit: 5
+  FirePower: 60
+  FirePowerIncrement: 35
+  FirePowerLowerLimit: 60
+  FirePowerUpperLimit: 130
+  FireRateUI: 20.2
+  FireRangeUI: 25.2
+  FirePowerUI: 21.6
+  FireRateIncrementUI: 20.2
+  FireRangeIncrementUI: 25.2
+  FirePowerIncrementUI: 21.6
+  WeaponEnhancementPrefabs:
+  - {fileID: 149602735342646433, guid: 8e6e72351aadad945863a04f4064577b, type: 3}
+  - {fileID: 749071229150847588, guid: b895772d716fffb4fa6c419fbd06f9e4, type: 3}
+  - {fileID: 3871283448577764521, guid: af5ba3e3de3a8444fba7e1050f18e65e, type: 3}
+  - {fileID: 220727732987479555, guid: db1315c0bdfd4b6429c8ddfb326f1708, type: 3}
+  - {fileID: 5756308504020215023, guid: d6eb41df3f41d234790e222d21570884, type: 3}
+  WeaponEnhancementShadowPrefabs:
+  - {fileID: 149602735342646433, guid: 436a4a8de33e79c4ab92646dd9721a63, type: 3}
+  - {fileID: 749071229150847588, guid: d132e25c259656c40a8e926730f1fedd, type: 3}
+  - {fileID: 3871283448577764521, guid: 9f06e1e56a7861545acc17ada263ff0d, type: 3}
+  - {fileID: 220727732987479555, guid: 069ea00e8c7df8f4d8043e2c3753bd69, type: 3}
+  - {fileID: 5756308504020215023, guid: 28679998a7d29ef48abad68da040948b, type: 3}
+  InstantiatedWeaponEncements: []
+  EnhancementLevelIds: ffffffffffffffffffffffffffffffffffffffff
+  WeaponEnhancementCounter: 0
+  DualWeaponMat: {fileID: 2100000, guid: faba3bd279f31554cac1ef6471934085, type: 2}

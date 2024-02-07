@@ -1,0 +1,11 @@
+
+Game Name : Gun Run Master: Weapon Craft
+
+Package Id : com.fc.pm.gun.runner.weapon.master.craft
+
+AppsFlyer Dev Id : UAVHtuYSgwSPXxXQVDGA65
+IronSource AppId : 1d34e6435
+AppOpen Ad Id : ca-app-pub-3046520253844875/6136477980
+Admob App Id : ca-app-pub-3046520253844875~5418346582
+
+

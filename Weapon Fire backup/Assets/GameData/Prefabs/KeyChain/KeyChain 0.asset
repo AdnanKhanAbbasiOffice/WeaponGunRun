@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 291544fb404d6f7478bbd08f5469cc57, type: 3}
+  m_Name: KeyChain 0
+  m_EditorClassIdentifier: 
+  IsActivated: 0
+  KeyChainIndex: 0
+  KeyChain: {fileID: 3875519592825078144, guid: dcabcb9451d959d479741a73533489a0,
+    type: 3}
+  FillPercentage: 1
+  KeyChainSprite: {fileID: 21300000, guid: cbb1459e124766b4bbb9db1371a61db2, type: 3}

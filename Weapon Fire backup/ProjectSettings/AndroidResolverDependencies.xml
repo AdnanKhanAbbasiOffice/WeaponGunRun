@@ -1,0 +1,71 @@
+<dependencies>
+  <packages>
+    <package>androidx.legacy:legacy-support-v4:1.0.0</package>
+    <package>androidx.recyclerview:recyclerview:1.2.1</package>
+    <package>com.android.installreferrer:installreferrer:1.1.2</package>
+    <package>com.android.installreferrer:installreferrer:2.1</package>
+    <package>com.applovin:applovin-sdk:12.1.0</package>
+    <package>com.appsflyer:adrevenue:6.9.1</package>
+    <package>com.appsflyer:af-android-sdk:6.12.2</package>
+    <package>com.appsflyer:unity-adrevenue-generic-wrapper:6.9.1</package>
+    <package>com.appsflyer:unity-wrapper:6.12.22</package>
+    <package>com.facebook.android:audience-network-sdk:6.16.0</package>
+    <package>com.fyber:marketplace-sdk:8.2.5</package>
+    <package>com.google.android.gms:play-services-ads:22.5.0</package>
+    <package>com.google.android.gms:play-services-ads:22.6.0</package>
+    <package>com.google.android.gms:play-services-ads-identifier:18.0.1</package>
+    <package>com.google.android.gms:play-services-base:18.1.0</package>
+    <package>com.google.android.gms:play-services-basement:18.1.0</package>
+    <package>com.google.android.ump:user-messaging-platform:2.1.0</package>
+    <package>com.google.firebase:firebase-analytics:21.1.1</package>
+    <package>com.google.firebase:firebase-analytics-unity:9.6.0</package>
+    <package>com.google.firebase:firebase-app-unity:9.6.0</package>
+    <package>com.google.firebase:firebase-common:20.1.2</package>
+    <package>com.inmobi.monetization:inmobi-ads-kotlin:10.6.2</package>
+    <package>com.ironsource.adapters:admobadapter:4.3.42</package>
+    <package>com.ironsource.adapters:applovinadapter:4.3.41</package>
+    <package>com.ironsource.adapters:facebookadapter:4.3.45</package>
+    <package>com.ironsource.adapters:fyberadapter:4.3.29</package>
+    <package>com.ironsource.adapters:inmobiadapter:4.3.21</package>
+    <package>com.ironsource.adapters:mintegraladapter:4.3.23</package>
+    <package>com.ironsource.adapters:pangleadapter:4.3.24</package>
+    <package>com.ironsource.adapters:smaatoadapter:4.3.9</package>
+    <package>com.ironsource.adapters:unityadsadapter:4.3.34</package>
+    <package>com.ironsource.adapters:vungleadapter:4.3.23</package>
+    <package>com.ironsource.sdk:mediationsdk:7.6.1</package>
+    <package>com.ironsource.unity:adqualitysdk:7.16.0</package>
+    <package>com.ironsource:adqualitysdk:7.16.0</package>
+    <package>com.mbridge.msdk.oversea:mbbanner:16.6.21</package>
+    <package>com.mbridge.msdk.oversea:mbbid:16.6.21</package>
+    <package>com.mbridge.msdk.oversea:newinterstitial:16.6.21</package>
+    <package>com.mbridge.msdk.oversea:reward:16.6.21</package>
+    <package>com.pangle.global:ads-sdk:5.7.0.2</package>
+    <package>com.smaato.android.sdk:smaato-sdk-banner:22.0.2</package>
+    <package>com.smaato.android.sdk:smaato-sdk-in-app-bidding:22.0.2</package>
+    <package>com.unity3d.ads:unity-ads:4.9.2</package>
+    <package>com.vungle:vungle-ads:7.1.0</package>
+  </packages>
+  <files>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-analytics-unity/9.6.0/firebase-analytics-unity-9.6.0.aar</file>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-analytics-unity/9.6.0/firebase-analytics-unity-9.6.0.pom</file>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-app-unity/9.6.0/firebase-app-unity-9.6.0.aar</file>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-app-unity/9.6.0/firebase-app-unity-9.6.0.pom</file>
+  </files>
+  <settings>
+    <setting name="androidAbis" value="armeabi-v7a" />
+    <setting name="bundleId" value="com.fc.pm.gun.runner.weapon.master.craft" />
+    <setting name="explodeAars" value="True" />
+    <setting name="gradleBuildEnabled" value="True" />
+    <setting name="gradlePropertiesTemplateEnabled" value="True" />
+    <setting name="gradleTemplateEnabled" value="True" />
+    <setting name="installAndroidPackages" value="True" />
+    <setting name="localMavenRepoDir" value="Assets/GeneratedLocalRepo" />
+    <setting name="packageDir" value="Assets/Plugins/Android" />
+    <setting name="patchAndroidManifest" value="True" />
+    <setting name="patchMainTemplateGradle" value="True" />
+    <setting name="projectExportEnabled" value="False" />
+    <setting name="useFullCustomMavenRepoPathWhenExport" value="True" />
+    <setting name="useFullCustomMavenRepoPathWhenNotExport" value="False" />
+    <setting name="useJetifier" value="True" />
+  </settings>
+</dependencies>

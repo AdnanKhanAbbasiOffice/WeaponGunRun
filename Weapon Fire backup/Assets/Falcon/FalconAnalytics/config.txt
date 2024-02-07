@@ -1,0 +1,6 @@
+{
+  "version": "2.2.4",
+  "require": {
+      "FalconCore":"2.2.4"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1008335166553",
+    "project_id": "pm-pm-gun-run-master-weapon-cr",
+    "storage_bucket": "pm-pm-gun-run-master-weapon-cr.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1008335166553:android:6d30b45667b5e84504e548",
+        "android_client_info": {
+          "package_name": "com.fc.pm.gun.runner.weapon.master.craft"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDskx_zSuRL79cXnEvepRvUTu7ZiZt5Tzg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
