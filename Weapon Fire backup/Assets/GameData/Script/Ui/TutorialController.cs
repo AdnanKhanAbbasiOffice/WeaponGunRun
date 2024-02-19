@@ -62,7 +62,9 @@ public class TutorialController : MonoBehaviour
         }
         else if (steps == 3 && !IsTutorialStep3Done)
         {
-         //  print("step 3");
+            //  print("step 3");
+           
+            
             TutorialStep1.SetActive(false);
             TutorialStep2.SetActive(false);
             TutorialStep3.SetActive(false);
@@ -72,6 +74,7 @@ public class TutorialController : MonoBehaviour
             DeactivateUI[0].GetComponent<Button>().enabled = true;
             DeactivateUI[1].GetComponent<Button>().enabled = true;
             GameManager.Instance.playerController.WeaponRotation.SetActive(true);
+            GameManager.Instance.levelManager[GameManager.Instance.currentLevel].IsTutorialLevel = false;
             gameObject.SetActive(false);
 
         }

@@ -19,7 +19,7 @@ MonoBehaviour:
   BulletPrefab: {fileID: 2071336235995738722, guid: 58573ba6041b59c498ad8e86e51e04bc,
     type: 3}
   WeaponName: 1ST
-  FireRate: 0.6
+  FireRate: 0.5
   FireRateIncrement: 0.09
   FireRateLowerLimit: 0.25
   FireRateUpperLimit: 0.6

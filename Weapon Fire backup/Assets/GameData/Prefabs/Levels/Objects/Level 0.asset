@@ -16,4 +16,4 @@ MonoBehaviour:
     type: 3}
   totalTarget: 0
   IsTutorialLevel: 0
-  IsLevelBeforeTutorial: 0
+  IsLevelBeforeTutorial: 1

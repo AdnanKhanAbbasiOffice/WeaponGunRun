@@ -5,12 +5,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System;
-
+using TMPro;
 public class GameManager : MonoBehaviour
 {
     #region Variables
     public static GameManager Instance;
-    public AdManager AdManagerInstance;
+   
     public PlayerController playerController;
     public CameraControll _CameraControll;
     public bool IsGameStart = false;
@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     internal int totalTarget = 0;
     internal int achiveTarget = 0;
     private IEnumerator FireCoroutine;
-
+    public TextMeshProUGUI test;
     public bool IsFinishLineCross;
     #endregion Variables
     #region ReturnVariables
@@ -157,6 +157,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+     //   PlayerPrefs.SetFloat("totalCash", 100000);
         Initilize();
 
     }
@@ -172,15 +173,20 @@ public class GameManager : MonoBehaviour
     {
         //  print(currentLevel);
 
-        AdManagerInstance = FindObjectOfType<AdManager>();
+
+      //  test.text = "level before tutorial" + " admanager instance name : " + AdManager.Instance.name + " current level : " + currentLevel+ " IsFirebaseInitialize : " + AdManager.Instance.IsFirebaseInitialized;
 
         totalTarget = levelManager[currentLevel].totalTarget;
         Instantiate(levelManager[currentLevel].levelPreb);
         ActivateWeapon(CurrentWeapon);
         SetWeaponFeatureUI();
-        AdManagerInstance.ActivateConsentButton();
+     
      //  SetWeaponUIFeatureLevelWise();
         TestControllerValues("initialize");
+
+        uiManager.gamePlay.LevelPriceText.text = "$" + LevelPrice;
+
+       
         LevelPriceButtonStatus();
         if (levelManager[currentLevel].IsLevelBeforeTutorial)
         {
@@ -204,10 +210,12 @@ public class GameManager : MonoBehaviour
            // _CameraControll.PlayerCamera.SetActive(true);
 
             _CameraControll.Initializ(playerController);
-      
+       
         }
         else
         {
+          //  print("level after tutorial");
+          //  test.text = "level after tutorial" + " admanager instance : " + AdManager.Instance.name + " current level : " + currentLevel + " IsFirebaseInitialize : " + AdManager.Instance.IsFirebaseInitialized;
             var temp = playerController.transform.position;
             temp.x = -3;
             playerController.transform.position = temp;
@@ -235,9 +243,12 @@ public class GameManager : MonoBehaviour
 
 
         }
-
-
+          AdManager.Instance.ActivateConsentButton();
+        // Invoke(nameof(AdManager.Instance.FireBaseInitialize),3.0f);
+        StartCoroutine(AdManager.Instance.FirebaseInitialize());
     }
+ 
+   
     public bool IsBattleON;
     public void TapToPlay()
     {
@@ -756,7 +767,7 @@ public class GameManager : MonoBehaviour
     }
     public void SetLevelPrice()
     {
-        LevelPrice += 10;
+        LevelPrice += (20*(currentLevel+1));
 
         uiManager.gamePlay.LevelPriceText.text = "$"+LevelPrice;
 
@@ -879,47 +890,48 @@ public class GameManager : MonoBehaviour
 
     public void ShowBanner()
     {
-        AdManagerInstance.ShowBanner();
+        AdManager.Instance.ShowBanner();
     }
     public void HideBanner()
     {
-        AdManagerInstance.HideBanner();
+        AdManager.Instance.HideBanner();
 
     }
     public void DisplayBanner()
     {
-        AdManagerInstance.DisplayBanner();
+        AdManager.Instance.DisplayBanner();
     }
     public void DestroyBanner()
     {
-        AdManagerInstance.DestroyBanner();
+        AdManager.Instance.DestroyBanner();
     }
 
     public void LoadInterstitial()
     {
 
-        AdManagerInstance.LoadInterstitial();
+        AdManager.Instance.LoadInterstitial();
     }
     public void ShowInterstitial()
     {
-        AdManagerInstance.ShowInterstitial();
+        AdManager.Instance.ShowInterstitial();
     }
 
     public void ShowRewarded(string reward = "")
     {
-        AdManagerInstance.ShowRewarded(reward);
+if(AdManager.Instance)
+   AdManager.Instance.ShowRewarded(reward);
     }
 
     public void ShowConsent()
     {
-        AdManagerInstance.ShowConsent();
+        AdManager.Instance.ShowConsent();
     }
     #endregion
 
 
     public void FirebaseEvents(string EventName = "", string ValueTitle = "", string Value = "")
     {
-        AdManagerInstance.FirebaseEvents(EventName, ValueTitle, Value);
+        AdManager.Instance.FirebaseEvents(EventName, ValueTitle, Value);
 
     }
 

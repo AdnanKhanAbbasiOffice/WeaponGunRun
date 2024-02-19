@@ -17,12 +17,12 @@
     <package>com.google.android.gms:play-services-base:18.1.0</package>
     <package>com.google.android.gms:play-services-basement:18.1.0</package>
     <package>com.google.android.ump:user-messaging-platform:2.1.0</package>
-    <package>com.google.firebase:firebase-analytics:21.1.1</package>
-    <package>com.google.firebase:firebase-analytics-unity:9.6.0</package>
-    <package>com.google.firebase:firebase-app-unity:9.6.0</package>
-    <package>com.google.firebase:firebase-common:20.1.2</package>
+    <package>com.google.firebase:firebase-analytics:21.2.0</package>
+    <package>com.google.firebase:firebase-analytics-unity:10.3.0</package>
+    <package>com.google.firebase:firebase-app-unity:10.3.0</package>
+    <package>com.google.firebase:firebase-common:20.2.0</package>
     <package>com.inmobi.monetization:inmobi-ads-kotlin:10.6.2</package>
-    <package>com.ironsource.adapters:admobadapter:4.3.42</package>
+    <package>com.ironsource.adapters:admobadapter:4.3.41</package>
     <package>com.ironsource.adapters:applovinadapter:4.3.41</package>
     <package>com.ironsource.adapters:facebookadapter:4.3.45</package>
     <package>com.ironsource.adapters:fyberadapter:4.3.29</package>
@@ -30,7 +30,6 @@
     <package>com.ironsource.adapters:mintegraladapter:4.3.23</package>
     <package>com.ironsource.adapters:pangleadapter:4.3.24</package>
     <package>com.ironsource.adapters:smaatoadapter:4.3.9</package>
-    <package>com.ironsource.adapters:unityadsadapter:4.3.34</package>
     <package>com.ironsource.adapters:vungleadapter:4.3.23</package>
     <package>com.ironsource.sdk:mediationsdk:7.6.1</package>
     <package>com.ironsource.unity:adqualitysdk:7.16.0</package>
@@ -42,17 +41,16 @@
     <package>com.pangle.global:ads-sdk:5.7.0.2</package>
     <package>com.smaato.android.sdk:smaato-sdk-banner:22.0.2</package>
     <package>com.smaato.android.sdk:smaato-sdk-in-app-bidding:22.0.2</package>
-    <package>com.unity3d.ads:unity-ads:4.9.2</package>
     <package>com.vungle:vungle-ads:7.1.0</package>
   </packages>
   <files>
-    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-analytics-unity/9.6.0/firebase-analytics-unity-9.6.0.aar</file>
-    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-analytics-unity/9.6.0/firebase-analytics-unity-9.6.0.pom</file>
-    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-app-unity/9.6.0/firebase-app-unity-9.6.0.aar</file>
-    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-app-unity/9.6.0/firebase-app-unity-9.6.0.pom</file>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-analytics-unity/10.3.0/firebase-analytics-unity-10.3.0.aar</file>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-analytics-unity/10.3.0/firebase-analytics-unity-10.3.0.pom</file>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-app-unity/10.3.0/firebase-app-unity-10.3.0.aar</file>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-app-unity/10.3.0/firebase-app-unity-10.3.0.pom</file>
   </files>
   <settings>
-    <setting name="androidAbis" value="armeabi-v7a" />
+    <setting name="androidAbis" value="arm64-v8a,armeabi-v7a" />
     <setting name="bundleId" value="com.fc.pm.gun.runner.weapon.master.craft" />
     <setting name="explodeAars" value="True" />
     <setting name="gradleBuildEnabled" value="True" />

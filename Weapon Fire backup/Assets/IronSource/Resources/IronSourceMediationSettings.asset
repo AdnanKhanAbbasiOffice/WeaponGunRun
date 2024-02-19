@@ -16,6 +16,6 @@ MonoBehaviour:
   IOSAppKey: 
   EnableIronsourceSDKInitAPI: 0
   AddIronsourceSkadnetworkID: 0
-  DeclareAD_IDPermission: 0
+  DeclareAD_IDPermission: 1
   EnableAdapterDebug: 0
   EnableIntegrationHelper: 0

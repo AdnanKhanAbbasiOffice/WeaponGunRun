@@ -19,4 +19,4 @@ MonoBehaviour:
   optimizeInitialization: 0
   optimizeAdLoading: 0
   userTrackingUsageDescription: 
-  validateGradleDependencies: 0
+  validateGradleDependencies: 1

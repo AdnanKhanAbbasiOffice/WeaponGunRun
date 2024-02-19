@@ -15,5 +15,5 @@ MonoBehaviour:
   levelPreb: {fileID: 6639970892146918387, guid: 4fa01733df3ac134eac7902bf7837b73,
     type: 3}
   totalTarget: 0
-  IsTutorialLevel: 0
+  IsTutorialLevel: 1
   IsLevelBeforeTutorial: 0

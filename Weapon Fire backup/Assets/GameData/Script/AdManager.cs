@@ -11,29 +11,50 @@ using GoogleMobileAds;
 using GoogleMobileAds.Ump;
 using GoogleMobileAds.Api;
 using GoogleMobileAds.Common;
+using TMPro;
+using UnityEngine.SceneManagement;
+
 
 public class AdManager : MonoBehaviour
 {
+	public static AdManager Instance;
 	public string AppsFlyerDevID= "UAVHtuYSgwSPXxXQVDGA65";
 	[SerializeField]string IronSourceAppID = "1d34e6435";
 	[SerializeField] string AppOpenUnitId = "ca-app-pub-3940256099942544/9257395921";
+
+	[HideInInspector]
+	public bool IsFirebaseInitialized;
 
 	// App open ads can be preloaded for up to 4 hours.
 	private readonly TimeSpan TIMEOUT = TimeSpan.FromHours(4);
 	private DateTime _expireTime;
 	private AppOpenAd _appOpenAd;
-
-
+	
+	public TextMeshProUGUI test;
 	private void Awake()
     {
+
+		if (Instance == null)
+		{
+			Instance = this;
+		}
+		else
+		{
+			Destroy(gameObject);
+
+		}
+
+		DontDestroyOnLoad(gameObject);
+
 		// Use the AppStateEventNotifier to listen to application open/close events.
 		// This is used to launch the loaded ad when we open the app.
 		AppStateEventNotifier.AppStateChanged += OnAppStateChanged;
 
 		FalconUMP.ShowConsentForm(onSetIronSourceConsent, onInitializeAdmob,onShowPopupATT);
 		
-		DontDestroyOnLoad(gameObject);
-    }
+		SdkInitialization();
+	
+	}
 
 	private void onSetIronSourceConsent(bool consentValue)
 	{
@@ -75,26 +96,50 @@ public class AdManager : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
+		
+		//test.text = " admanager instance name : " + Instance.name + " IsFirebaseInitialize : " + IsFirebaseInitialized;
+
+	}
+	public void SdkInitialization()
+    {
+
+		
 		FireBaseInitialize();
 		IronSourceInitialization();
 		IronSourceAdQualityInitialization();
 		ShowBanner();
-		AppsFlyerInitialization();
+	    AppsFlyerInitialization();
 
 	}
+	public IEnumerator FirebaseInitialize()
+    {
+			yield return new WaitForSeconds(0.5f);
 
-    #region Sdks Initializations
+		while (!IsFirebaseInitialized)
+        {
 
-    #region IronSource Sdk Initialization
-    void IronSourceInitialization()
+			yield return new WaitForSeconds(0.5f);
+			FireBaseInitialize();
+
+		}
+
+    }
+
+	#region Sdks Initializations
+
+	#region IronSource Sdk Initialization
+	void IronSourceInitialization()
 	{
-#if UNITY_ANDROID
-	//	IronSourceAppID = "85460dcd";
-#elif UNITY_IPHONE
-     //IronSourceAppID = "8545d445";
-#else
-		 IronSourceAppID = "unexpected_platform";
-#endif
+//#if UNITY_ANDROID
+//		//	IronSourceAppID = "85460dcd";
+//#elif UNITY_IPHONE
+//     //IronSourceAppID = "8545d445";
+//#else
+//		// IronSourceAppID = "unexpected_platform";
+//#endif
+		
+	
+		Debug.Log("unity-script: IronSource.Agent.init");
 		Debug.Log("unity-script: MyAppStart Start called");
 
 		//Dynamic config example
@@ -108,30 +153,33 @@ public class AdManager : MonoBehaviour
 
 		Debug.Log("unity-script: unity version" + IronSource.unityVersion());
 
-
+		
+		
 		//Add AdInfo Impression Event
 		IronSourceEvents.onImpressionDataReadyEvent += ImpressionDataReadyEvent;
+        
+
+       // Add AdInfo Banner Events
+
+        IronSourceBannerEvents.onAdLoadedEvent += BannerOnAdLoadedEvent;
+        IronSourceBannerEvents.onAdLoadFailedEvent += BannerOnAdLoadFailedEvent;
+        IronSourceBannerEvents.onAdClickedEvent += BannerOnAdClickedEvent;
+        IronSourceBannerEvents.onAdScreenPresentedEvent += BannerOnAdScreenPresentedEvent;
+        IronSourceBannerEvents.onAdScreenDismissedEvent += BannerOnAdScreenDismissedEvent;
+        IronSourceBannerEvents.onAdLeftApplicationEvent += BannerOnAdLeftApplicationEvent;
+
+        //Add AdInfo Interstitial Events
+        IronSourceInterstitialEvents.onAdReadyEvent += InterstitialOnAdReadyEvent;
+        IronSourceInterstitialEvents.onAdLoadFailedEvent += InterstitialOnAdLoadFailed;
+        IronSourceInterstitialEvents.onAdOpenedEvent += InterstitialOnAdOpenedEvent;
+        IronSourceInterstitialEvents.onAdClickedEvent += InterstitialOnAdClickedEvent;
+        IronSourceInterstitialEvents.onAdShowSucceededEvent += InterstitialOnAdShowSucceededEvent;
+        IronSourceInterstitialEvents.onAdShowFailedEvent += InterstitialOnAdShowFailedEvent;
+        IronSourceInterstitialEvents.onAdClosedEvent += InterstitialOnAdClosedEvent;
 
 
-		//Add AdInfo Banner Events
-		IronSourceBannerEvents.onAdLoadedEvent += BannerOnAdLoadedEvent;
-		IronSourceBannerEvents.onAdLoadFailedEvent += BannerOnAdLoadFailedEvent;
-		IronSourceBannerEvents.onAdClickedEvent += BannerOnAdClickedEvent;
-		IronSourceBannerEvents.onAdScreenPresentedEvent += BannerOnAdScreenPresentedEvent;
-		IronSourceBannerEvents.onAdScreenDismissedEvent += BannerOnAdScreenDismissedEvent;
-		IronSourceBannerEvents.onAdLeftApplicationEvent += BannerOnAdLeftApplicationEvent;
-
-		//Add AdInfo Interstitial Events
-		IronSourceInterstitialEvents.onAdReadyEvent += InterstitialOnAdReadyEvent;
-		IronSourceInterstitialEvents.onAdLoadFailedEvent += InterstitialOnAdLoadFailed;
-		IronSourceInterstitialEvents.onAdOpenedEvent += InterstitialOnAdOpenedEvent;
-		IronSourceInterstitialEvents.onAdClickedEvent += InterstitialOnAdClickedEvent;
-		IronSourceInterstitialEvents.onAdShowSucceededEvent += InterstitialOnAdShowSucceededEvent;
-		IronSourceInterstitialEvents.onAdShowFailedEvent += InterstitialOnAdShowFailedEvent;
-		IronSourceInterstitialEvents.onAdClosedEvent += InterstitialOnAdClosedEvent;
-
-
-		//Add AdInfo Rewarded Video Events
+        //Add AdInfo Rewarded Video Events
+       // IronSourceEvents.onRewardedVideoAdLoadedDemandOnlyEvent += RewardedLoaded;
 		IronSourceRewardedVideoEvents.onAdOpenedEvent += RewardedVideoOnAdOpenedEvent;
 		IronSourceRewardedVideoEvents.onAdClosedEvent += RewardedVideoOnAdClosedEvent;
 		IronSourceRewardedVideoEvents.onAdAvailableEvent += RewardedVideoOnAdAvailable;
@@ -139,17 +187,20 @@ public class AdManager : MonoBehaviour
 		IronSourceRewardedVideoEvents.onAdShowFailedEvent += RewardedVideoOnAdShowFailedEvent;
 		IronSourceRewardedVideoEvents.onAdRewardedEvent += RewardedVideoOnAdRewardedEvent;
 		IronSourceRewardedVideoEvents.onAdClickedEvent += RewardedVideoOnAdClickedEvent;
+		//IronSourceRewardedVideoEvents.onAdLoadFailedEvent += Rewardedafilatoload;
 
 
+	IronSourceEvents.onSdkInitializationCompletedEvent += SdkInitializationCompletedEvent;
 
-
-		// SDK init
-		Debug.Log("unity-script: IronSource.Agent.init");
-		IronSource.Agent.init(IronSourceAppID);
-
-		IronSource.Agent.init (IronSourceAppID, IronSourceAdUnits.REWARDED_VIDEO, IronSourceAdUnits.INTERSTITIAL, IronSourceAdUnits.OFFERWALL, IronSourceAdUnits.BANNER);
-
+	
 		
+		//IronSource.Agent.init(IronSourceAppID);
+		// SDK init
+		IronSource.Agent.init(IronSourceAppID, IronSourceAdUnits.REWARDED_VIDEO, IronSourceAdUnits.INTERSTITIAL, IronSourceAdUnits.OFFERWALL, IronSourceAdUnits.BANNER);
+
+
+		LoadRewardedAd();
+
 
 		//IronSource.Agent.initISDemandOnly (appKey, IronSourceAdUnits.REWARDED_VIDEO, IronSourceAdUnits.INTERSTITIAL);
 
@@ -157,13 +208,36 @@ public class AdManager : MonoBehaviour
 		//// IronSource.Agent.setUserId ("UserId");
 
 		// Load Banner example
-	
+		//
+
 	}
 
-	#endregion
 
-	#region IronSource Ad Quality Sdk Initialization
-	public void IronSourceAdQualityInitialization()
+	private void SdkInitializationCompletedEvent()
+	{
+
+		//Launch test suite
+		// IronSource.Agent.launchTestSuite();
+		Debug.Log("Sdk is Initialize");
+
+	}
+
+	//private void RewardedLoaded(string obj)
+ //   {
+	//	//  throw new NotImplementedException();
+	//	Debug.Log("Is reward ad loaded?");
+ //   }
+
+  //  private void Rewardedafilatoload(IronSourceError obj)
+  //  {
+		//// throw new NotImplementedException();
+		//Debug.Log("failed to load Rewarded");
+  //  }
+
+    #endregion
+
+    #region IronSource Ad Quality Sdk Initialization
+    public void IronSourceAdQualityInitialization()
     {
 		ISAdQualityConfig adQualityConfig = new ISAdQualityConfig();
 
@@ -206,7 +280,7 @@ public class AdManager : MonoBehaviour
 				FirebaseAnalytics.SetAnalyticsCollectionEnabled(true);
 
 				//	Debug.LogError(" resolve all Firebase dependencies");
-
+				IsFirebaseInitialized = true;
 			}
 			else
 			{
@@ -217,6 +291,7 @@ public class AdManager : MonoBehaviour
 		});
 
 
+		test.text = " admanager instance name : " + Instance.name + " IsFirebaseInitialize : " + IsFirebaseInitialized;
 
 
 
@@ -272,7 +347,9 @@ public class AdManager : MonoBehaviour
 
 	public void ShowBanner()
 	{
-		IronSource.Agent.loadBanner(IronSourceBannerSize.BANNER, IronSourceBannerPosition.BOTTOM, (string)"YOUR_PLACEMENT_NAME");
+		//IronSource.Agent.loadBanner(IronSourceBannerSize.BANNER, IronSourceBannerPosition.BOTTOM, (string)"YOUR_PLACEMENT_NAME");
+
+		IronSource.Agent.loadBanner(IronSourceBannerSize.BANNER, IronSourceBannerPosition.BOTTOM);
 		//IronSource.Agent.loadBanner(new IronSourceBannerSize(320, 50), IronSourceBannerPosition.BOTTOM);
 
 		Dictionary<string, string> additionalParams = new Dictionary<string, string>();
@@ -326,18 +403,41 @@ public class AdManager : MonoBehaviour
 
 	public void ShowRewarded(string reward = "")
 	{
+		Debug.Log("RewardedAd loaded : "+ reward);
 		AppsFlyer.sendEvent("af_rewarded_show", null);
 
 		if (IronSource.Agent.isRewardedVideoAvailable())
 		{
+			Debug.Log("RewardedAd Ad Is Ready");
 
 			IronSource.Agent.showRewardedVideo(reward);
 
 		}
+		else
+        {
+			Debug.Log("RewardedAd Ad Is not Ready");
+
+			LoadRewardedAd();
+
+		}
+	}
+
+
+	public void LoadRewardedAd()
+    {
+		Debug.Log("Load RewardedAd Ad");
+
+		IronSource.Agent.loadRewardedVideo();
 	}
 
 	public void FirebaseEvents(string EventName = "", string ValueTitle = "", string Value = "")
 	{
+
+		if(!IsFirebaseInitialized)
+        {
+			FireBaseInitialize();
+			return;
+        }
 
 		if (EventName == "level_start")
 		{
@@ -628,6 +728,7 @@ public class AdManager : MonoBehaviour
 	// Invoked when the interstitial ad was loaded succesfully.
 	void InterstitialOnAdReadyEvent(IronSourceAdInfo adInfo)
 	{
+		
 		Firebase.Analytics.FirebaseAnalytics.LogEvent("ad_inter_load_success");
 
 	}
@@ -686,6 +787,7 @@ void RewardedVideoOnAdAvailable(IronSourceAdInfo adInfo)
 // This replaces the RewardedVideoAvailabilityChangedEvent(false) event
 void RewardedVideoOnAdUnavailable()
 {
+		LoadRewardedAd();
 }
 // The Rewarded Video ad view has opened. Your activity will loose focus.
 void RewardedVideoOnAdOpenedEvent(IronSourceAdInfo adInfo)
@@ -696,12 +798,14 @@ void RewardedVideoOnAdOpenedEvent(IronSourceAdInfo adInfo)
 // The Rewarded Video ad view is about to be closed. Your activity will regain its focus.
 void RewardedVideoOnAdClosedEvent(IronSourceAdInfo adInfo)
 {
+		LoadRewardedAd();
 }
 // The user completed to watch the video, and should be rewarded.
 // The placement parameter will include the reward data.
 // When using server-to-server callbacks, you may ignore this event and wait for the ironSource server callback.
 void RewardedVideoOnAdRewardedEvent(IronSourcePlacement placement, IronSourceAdInfo adInfo)
 {
+		
 	string reward = placement.getPlacementName();
 	// now call user define method with reward parameter to give reward to user
 	 GameManager.Instance.RewardPlayer(reward);
@@ -712,13 +816,13 @@ void RewardedVideoOnAdRewardedEvent(IronSourcePlacement placement, IronSourceAdI
 
 
 	Firebase.Analytics.FirebaseAnalytics.LogEvent("ads_reward_complete");
-
+	
 }
 // The rewarded video ad was failed to show.
 void RewardedVideoOnAdShowFailedEvent(IronSourceError error, IronSourceAdInfo adInfo)
 {
 	Firebase.Analytics.FirebaseAnalytics.LogEvent("ads_reward_show_fail");
-
+		LoadRewardedAd();
 }
 // Invoked when the video ad was clicked.
 // This callback is not supported by all networks, and we recommend using it only if
@@ -781,6 +885,7 @@ void RewardedVideoOnAdClickedEvent(IronSourcePlacement placement, IronSourceAdIn
 		// Raised when the ad is estimated to have earned money.
 		ad.OnAdPaid += (AdValue adValue) =>
 		{
+		
 			Debug.Log(String.Format("App open ad paid {0} {1}.",
 				adValue.Value,
 				adValue.CurrencyCode));
@@ -793,6 +898,7 @@ void RewardedVideoOnAdClickedEvent(IronSourcePlacement placement, IronSourceAdIn
 		// Raised when a click is recorded for an ad.
 		ad.OnAdClicked += () =>
 		{
+			
 			Debug.Log("App open ad was clicked.");
 		};
 		// Raised when an ad opened full screen content.

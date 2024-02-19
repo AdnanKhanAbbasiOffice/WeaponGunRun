@@ -33,17 +33,19 @@ public class MouseDrag : MonoBehaviour
     bool IsEnhacementActivated;
     void OnMouseDown()
     {
+      //  print("mouse down 1");
         if (GameManager.Instance.levelManager[GameManager.Instance.currentLevel].IsTutorialLevel)
         {
 
             if (!GameManager.Instance.tutorialController.IsTutorialStep1Done)
             {
+              //  print("return");
                 return;
             }
 
 
         }
-
+      //  print("mouse down 2");
         GameManager.Instance.playerController.WeaponRotation.SetActive(false);
         IsMouseDown = true;
         daggingPlane = new Plane(mainCamera.transform.forward,
@@ -105,7 +107,7 @@ public class MouseDrag : MonoBehaviour
     public Vector3 DragSpeed = new Vector3(2.0f,2.0f,2.0f);
     void OnMouseDrag()
     {
-      
+       // print("mouse drag 1");
         if (GameManager.Instance.levelManager[GameManager.Instance.currentLevel].IsTutorialLevel)
         {
          
@@ -118,8 +120,8 @@ public class MouseDrag : MonoBehaviour
        
 
         }
-    
 
+       // print("mouse drag 2");
 
         Ray camRay = mainCamera.ScreenPointToRay(Input.mousePosition);
         float planeDistance;
