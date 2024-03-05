@@ -3,17 +3,11 @@
     "m_SelectedPackage": {
         "deviceId": "0826537254003452",
         "name": "com.fc.pm.gun.runner.weapon.master.craft",
-        "processId": 11600,
+        "processId": 28122,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
-        {
-            "deviceId": "0826537254003452",
-            "name": "com.fc.pm.gun.runner.weapon.master.craft",
-            "processId": 10751,
-            "exited": true
-        },
         {
             "deviceId": "0826537254003452",
             "name": "com.transsion.XOSLauncher.upgrade",
@@ -23,25 +17,31 @@
         {
             "deviceId": "0826537254003452",
             "name": "com.fc.pm.gun.runner.weapon.master.craft",
-            "processId": 24676,
+            "processId": 8845,
             "exited": true
         },
         {
             "deviceId": "0826537254003452",
             "name": "com.fc.pm.gun.runner.weapon.master.craft",
-            "processId": 8489,
+            "processId": 15246,
             "exited": true
         },
         {
             "deviceId": "0826537254003452",
             "name": "com.fc.pm.gun.runner.weapon.master.craft",
-            "processId": 8711,
+            "processId": 20112,
             "exited": true
         },
         {
             "deviceId": "0826537254003452",
             "name": "com.fc.pm.gun.runner.weapon.master.craft",
-            "processId": 11600,
+            "processId": 23170,
+            "exited": true
+        },
+        {
+            "deviceId": "0826537254003452",
+            "name": "com.fc.pm.gun.runner.weapon.master.craft",
+            "processId": 28122,
             "exited": false
         }
     ],

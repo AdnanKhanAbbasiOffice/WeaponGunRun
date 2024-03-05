@@ -9,3 +9,7 @@ AppOpen Ad Id : ca-app-pub-3046520253844875/6136477980
 Admob App Id : ca-app-pub-3046520253844875~5418346582
 
 
+
+FKey : J0zS7tgq6fAi7ikkmCdSOkKmuNxKNNok3rHYNNhpba
+
+

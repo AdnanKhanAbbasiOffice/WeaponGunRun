@@ -9,6 +9,8 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     #region Variables
+    [SerializeField] bool IsTestLevel;
+    [SerializeField] int TestLevelNo;
     public static GameManager Instance;
    
     public PlayerController playerController;
@@ -177,7 +179,16 @@ public class GameManager : MonoBehaviour
       //  test.text = "level before tutorial" + " admanager instance name : " + AdManager.Instance.name + " current level : " + currentLevel+ " IsFirebaseInitialize : " + AdManager.Instance.IsFirebaseInitialized;
 
         totalTarget = levelManager[currentLevel].totalTarget;
-        Instantiate(levelManager[currentLevel].levelPreb);
+        if(IsTestLevel)
+        {
+            Instantiate(levelManager[TestLevelNo].levelPreb);
+
+        }
+        else
+        {
+            Instantiate(levelManager[currentLevel].levelPreb);
+
+        }
         ActivateWeapon(CurrentWeapon);
         SetWeaponFeatureUI();
      
@@ -243,9 +254,7 @@ public class GameManager : MonoBehaviour
 
 
         }
-          AdManager.Instance.ActivateConsentButton();
-        // Invoke(nameof(AdManager.Instance.FireBaseInitialize),3.0f);
-        StartCoroutine(AdManager.Instance.FirebaseInitialize());
+      
     }
  
    
@@ -331,6 +340,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(uiManager.GameComplete(0.1f));
         // Log an event with a string parameter.
         FirebaseEvents("level_complete");
+     
     }
     public void GameOver()
     {
@@ -358,7 +368,7 @@ public class GameManager : MonoBehaviour
 
             uiManager.AddCashUpdate(-LevelPrice);
             FirebaseEvents("spend_virtual_currency", "EnhancementLevel", LevelPrice + "");
-
+         
             SetLevelPrice();
         }
         else
@@ -753,6 +763,8 @@ public class GameManager : MonoBehaviour
     }
     public void ClaimKeyChain()
     {
+       ShowInterstitial();
+
         GameComplete();
        // GameManager.Instance.uiManager.levelComplete.KeyChaneUnloackedPanel.SetActive(true);
     }
@@ -767,7 +779,7 @@ public class GameManager : MonoBehaviour
     }
     public void SetLevelPrice()
     {
-        LevelPrice += (20*(currentLevel+1));
+        LevelPrice += (5*(Mathf.Clamp(currentLevel,1,20)));
 
         uiManager.gamePlay.LevelPriceText.text = "$"+LevelPrice;
 
@@ -890,48 +902,48 @@ public class GameManager : MonoBehaviour
 
     public void ShowBanner()
     {
-        AdManager.Instance.ShowBanner();
+     
     }
     public void HideBanner()
     {
-        AdManager.Instance.HideBanner();
+    
 
     }
     public void DisplayBanner()
     {
-        AdManager.Instance.DisplayBanner();
+          
     }
     public void DestroyBanner()
     {
-        AdManager.Instance.DestroyBanner();
+             
     }
 
     public void LoadInterstitial()
     {
-
-        AdManager.Instance.LoadInterstitial();
+                  
     }
     public void ShowInterstitial()
     {
-        AdManager.Instance.ShowInterstitial();
     }
 
     public void ShowRewarded(string reward = "")
     {
-if(AdManager.Instance)
-   AdManager.Instance.ShowRewarded(reward);
+        //if (AdManager.Instance)
+        //{
+        //    AdManager.Instance.ShowRewarded(reward);
+        //}
     }
 
     public void ShowConsent()
     {
-        AdManager.Instance.ShowConsent();
+                         
     }
     #endregion
 
 
     public void FirebaseEvents(string EventName = "", string ValueTitle = "", string Value = "")
     {
-        AdManager.Instance.FirebaseEvents(EventName, ValueTitle, Value);
+       
 
     }
 

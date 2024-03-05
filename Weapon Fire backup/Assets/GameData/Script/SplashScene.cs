@@ -9,7 +9,7 @@ public class SplashScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       // Invoke("LoadGamePlay",5.0f); 
+        Invoke("LoadGamePlay",10.0f); 
     }
 
     // Update is called once per frame

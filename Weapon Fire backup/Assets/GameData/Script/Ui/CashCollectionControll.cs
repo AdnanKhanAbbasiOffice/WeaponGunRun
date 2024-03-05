@@ -82,15 +82,18 @@ public class CashCollectionControll : MonoBehaviour
                 }
                     else
                     {
-                        //print("complete game 1");
+                        print("No Thanks Button");
+
+                        GameManager.Instance.ShowInterstitial();
                         GameManager.Instance.GameComplete();
                         gameObject.SetActive(false);
                     }
                 }
                 else
                 {
-                   // print("complete game 2");
-                   // print("name :  "+gameObject.name);
+                     print("complete game 2");
+                    // print("name :  "+gameObject.name);
+                   
                     GameManager.Instance.GameComplete();
                     gameObject.SetActive(false);
                 }
@@ -98,9 +101,10 @@ public class CashCollectionControll : MonoBehaviour
                 GetComponent<AudioSource>().Pause();
 
             }
-
+           
             GameManager.Instance.uiManager.AddCashUpdate(pricepercash);
             GameManager.Instance.FirebaseEvents("earn_virtual_currency", "LevelPass", totalCash + "");
+    
 
         });
 
